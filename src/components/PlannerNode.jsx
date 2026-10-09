@@ -1,0 +1,4 @@
+import { memo } from 'react';
+import { Handle, Position } from '@xyflow/react';
+const types={area:'Направление',project:'Проект',goal:'Цель',task:'Задача',idea:'Идея',habit:'Привычка'};
+export default memo(function PlannerNode({data,selected}){return <div className={['planner-node',data.item.status==='done'?'node-done':'',selected?'selected':''].join(' ')}><Handle type="target" position={Position.Left} className="connector"/><div className="node-top"><span className={'type-dot type-'+data.item.type}/><span className="node-type">{types[data.item.type]||'Элемент'}</span>{data.item.status==='done'&&<span className="done-symbol">✓</span>}</div><strong title={data.item.title}>{data.item.title}</strong><small>{data.children} подветвей</small><Handle type="source" position={Position.Right} className="connector"/></div>});
