@@ -1,0 +1,6 @@
+import { initialItems } from '../data/initialTree.js';
+const KEY='gpro.visual-planner.v1';
+export function loadItems(){try{const v=JSON.parse(localStorage.getItem(KEY));if(Array.isArray(v)&&v.length&&v.every(x=>typeof x.id==='string'&&typeof x.title==='string'))return v;}catch{}return initialItems.map(x=>({...x}));}
+export function saveItems(items){try{localStorage.setItem(KEY,JSON.stringify(items));return true;}catch{return false;}}
+export function exportItems(items){const blob=new Blob([JSON.stringify({version:1,items},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='gpro-planner-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+export async function importItems(file){const obj=JSON.parse(await file.text());if(!obj||!Array.isArray(obj.items)||!obj.items.length)throw Error('Файл не содержит карту');const ids=new Set();for(const n of obj.items){if(typeof n.id!=='string'||typeof n.title!=='string'||!Number.isFinite(n.x)||!Number.isFinite(n.y)||ids.has(n.id))throw Error('Некорректные данные');ids.add(n.id);}for(const n of obj.items){if(n.parentId!=null&&!ids.has(n.parentId))throw Error('Найдена ветка без родителя');}return obj.items;}
