@@ -1,0 +1,1 @@
+export default function CanvasToolbar({onLayout,onExpand,onCollapse}){return <div className="canvas-toolbar"><button title="Автоматически расположить узлы" onClick={onLayout}>↔ Упорядочить</button><button onClick={onExpand}>⊞ Раскрыть всё</button><button onClick={onCollapse}>⊟ Свернуть ветви</button></div>}
