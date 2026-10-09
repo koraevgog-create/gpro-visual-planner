@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import ReactFlow,{Background,Controls,MiniMap,MarkerType} from '@xyflow/react';
+import { ReactFlow, Background, Controls, MiniMap, MarkerType } from '@xyflow/react';
 import PlannerNode from './PlannerNode.jsx';
 const nodeTypes={planner:PlannerNode};
 export default function PlannerCanvas({items,onSelect,onMove,selectedId}){
