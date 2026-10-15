@@ -19,3 +19,37 @@
 .node-actions button{height:27px;min-width:27px;border-radius:50%;background:#2e5480;color:white;border:1px solid #88bfff;box-shadow:0 2px 9px #0008;cursor:pointer;font-size:16px}
 .node-actions button:hover{background:#4389d4}
 @media(max-width:850px){.canvas-toolbar{top:9px;left:9px;gap:4px}.canvas-toolbar button{padding:7px;font-size:10px}.node-actions{opacity:1}}
+
+/* Mobile-first canvas usability patch v0.3.1 */
+.toolbar .toolbar-actions{position:relative}
+.toolbar .secondary-actions{display:flex;gap:8px;align-items:center}
+.mobile-menu-trigger{display:none}
+.planner-minimap{max-width:145px;max-height:100px}
+@media(max-width:850px){
+html,body,#root{height:100%;overflow:hidden}
+.app{height:100dvh;min-height:0;overflow:hidden}
+.toolbar{flex-wrap:nowrap;gap:8px;padding:8px 12px;flex:none}
+.brand{min-width:0;gap:8px}
+.brand-icon{width:32px;height:32px;border-radius:9px;font-size:20px;flex:none}
+.brand strong{font-size:13px;white-space:nowrap}
+.brand small{font-size:9px;white-space:nowrap}
+.toolbar-actions{width:auto!important;margin-left:auto;gap:6px}
+.toolbar-actions .primary{padding:9px 11px;font-size:13px}
+.add-label{display:none}
+.mobile-menu-trigger{display:inline-flex!important;justify-content:center;align-items:center;min-width:36px;height:35px;padding:0!important;font-size:22px!important}
+.toolbar .secondary-actions{display:none;position:absolute;right:0;top:43px;background:#1b293e;border:1px solid #455775;z-index:30;padding:10px;border-radius:12px;box-shadow:0 12px 30px #0008;flex-direction:column;align-items:stretch;min-width:160px}
+.toolbar .secondary-actions.expanded{display:flex}
+main{flex:1;min-height:0;display:block;position:relative}
+.workspace{position:absolute;inset:0;min-height:0}
+.canvas{inset:0}
+.sidebar{display:none;position:absolute;z-index:15;left:0;right:0;bottom:0;width:100%;max-height:min(55dvh,460px);min-height:0;overflow:auto;background:#1a273a;border-radius:18px 18px 0 0;border-top:1px solid #516581;box-shadow:0 -12px 40px #0008;padding:18px 18px calc(15px + env(safe-area-inset-bottom))}
+.sidebar:not(.empty){display:block}
+.canvas-toolbar{left:8px;top:8px;right:8px;max-width:none;display:flex;flex-wrap:nowrap;overflow-x:auto;gap:5px;scrollbar-width:none;padding:0 0 5px}
+.canvas-toolbar::-webkit-scrollbar{display:none}
+.canvas-toolbar button{white-space:nowrap;font-size:10px;padding:8px 10px}
+.react-flow__minimap{display:none!important}
+.canvas-hint{display:none}
+.react-flow__controls{bottom:12px;left:10px}
+.node-actions{opacity:1}
+.react-flow__node{touch-action:none}
+}
